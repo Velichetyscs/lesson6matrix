@@ -4,20 +4,20 @@ on:
   push:
 jobs:
   matrix-job:
-     name: matrix job
-     strategy:
-       matrix:
-         runner: [ubutu-latest, windows-latest]
-         python-version: [3.11, 3.12, 3.13]
-         include:
-           - runner: macos-latest
-             python-version: 3.12,
-         exclude:
+    name: matrix job
+    strategy:
+      matrix:
+        runner: [ubutu-latest, windows-latest]
+        python-version: [3.11, 3.12, 3.13]
+        include:
+          - runner: macos-latest
+            python-version: 3.12,
+        exclude:
            - runner: windows-latest
              python-version: 3.13
-  runs-on:  ${{ matrix.runner }}
-  steps:
-     - run: echo this job will run in pytho version ${{ matrix.python-version }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - run: echo this job will run in pytho version ${{ matrix.python-version }}
     
 
           
